@@ -1,0 +1,644 @@
+{
+  "protocolType": 2,
+  "protocolSeries": [
+    "OPC/UA"
+  ],
+  "protocolCode": "OPC-UA-01",
+  "protocolName": "OPC协议",
+  "protocolCategory": {
+    "protocolCategoryList": [
+      "OPC/UA"
+    ]
+  },
+  "protocolDetailsCfg": {
+    "protocolCfgItemList": [
+      {
+        "protocolCfgItemName": "deviceId",
+        "protocolCfgItemAlias": "Device ID",
+        "advancedCfgItem": false,
+        "protocolCfgItemDesc": null,
+        "dynamicFormConfig": {
+          "label": "连接器ID",
+          "dynamicFormProp": "deviceId",
+          "editable": false,
+          "createOpr": false,
+          "type": "input",
+          "required": true,
+          "rules": [
+            {
+              "required": true,
+              "trigger": "blur"
+            }
+          ]
+        }
+      },
+      {
+        "protocolCfgItemName": "deviceProtocol",
+        "protocolCfgItemAlias": "Device Protocol",
+        "advancedCfgItem": false,
+        "protocolCfgItemDesc": null,
+        "dynamicFormConfig": {
+          "label": "连接器协议",
+          "dynamicFormProp": "deviceProtocol",
+          "editable": false,
+          "createOpr": false,
+          "type": "input",
+          "required": true,
+          "rules": [
+            {
+              "required": true,
+              "trigger": "blur"
+            }
+          ]
+        }
+      },
+      {
+        "protocolCfgItemName": "deviceName",
+        "protocolCfgItemAlias": "Device Name",
+        "advancedCfgItem": false,
+        "protocolCfgItemDesc": null,
+        "dynamicFormConfig": {
+          "label": "连接器名称",
+          "dynamicFormProp": "deviceName",
+          "editable": true,
+          "createOpr": false,
+          "type": "input",
+          "required": true,
+          "rules": [
+            {
+              "required": true,
+              "trigger": "blur"
+            },
+            ,
+            {
+              "pattern": "^(?!_)(?!.*?_$)[a-zA-Z0-9\u4e00-\u9fa5_-]+$",
+              "message": "只支持中文、英文、数字、下划线、英文中划线!",
+              "trigger": "blur"
+            },
+            {
+              "max": 128,
+              "min": 1,
+              "message": "长度限制128字符!",
+              "trigger": "blur"
+            }
+          ]
+        }
+      },
+      {
+        "protocolCfgItemName": "opcServerUrl",
+        "protocolCfgItemAlias": "OPC Server URL",
+        "advancedCfgItem": false,
+        "dynamicFormConfig": {
+          "label": "服务器URL",
+          "valuePrefix": "opc.tcp://",
+          "dynamicFormProp": "opcServerUrl",
+          "rules": [
+            {
+              "required": true,
+              "trigger": "blur"
+            }
+          ],
+          "type": "input",
+          "required": true
+        }
+      },
+      {
+        "protocolCfgItemName": "opcAuthType",
+        "protocolCfgItemAlias": "OPC Auth Type",
+        "advancedCfgItem": false,
+        "dynamicFormConfig": {
+          "label": "认证方式",
+          "dynamicFormProp": "opcAuthType",
+          "rules": [
+            {
+              "required": true,
+              "trigger": "blur"
+            }
+          ],
+          "type": "select",
+          "placeholder": "请选择认证方式",
+          "required": true,
+          "props": [
+            {
+              "label": "匿名认证",
+              "value": 1
+            },
+            {
+              "label": "用户认证",
+              "value": 2
+            },
+            {
+              "label": "证书认证",
+              "value": 3
+            }
+          ]
+        }
+      },
+      {
+        "protocolCfgItemName": "opcBasicAuthUserName",
+        "protocolCfgItemAlias": "OPC Basic Auth - User Name",
+        "advancedCfgItem": false,
+        "dynamicFormConfig": {
+          "label": "用户名",
+          "dynamicFormProp": "opcBasicAuthUserName",
+          "rules": [
+            {
+              "required": true,
+              "trigger": "blur"
+            }
+          ],
+          "type": "input",
+          "required": true
+        }
+      },
+      {
+        "protocolCfgItemName": "opcBasicAuthPassword",
+        "protocolCfgItemAlias": "OPC Basic Auth - Password",
+        "advancedCfgItem": false,
+        "dynamicFormConfig": {
+          "label": "密码",
+          "dynamicFormProp": "opcBasicAuthPassword",
+          "rules": [
+            {
+              "required": true,
+              "trigger": "blur"
+            }
+          ],
+          "type": "input",
+          "required": true
+        }
+      },
+      {
+        "protocolCfgItemName": "opcCertAuthCertName",
+        "protocolCfgItemAlias": "OPC Certificate Auth - Certificate Name",
+        "advancedCfgItem": false,
+        "dynamicFormConfig": {
+          "label": "证书名称",
+          "dynamicFormProp": "opcCertAuthCertName",
+          "rules": [
+            {
+              "required": true,
+              "trigger": "blur"
+            }
+          ],
+          "type": "file",
+          "required": true
+        }
+      },
+      {
+        "protocolCfgItemName": "opcCertAuthCertSecret",
+        "protocolCfgItemAlias": "OPC Certificate Auth - Certificate Secret",
+        "advancedCfgItem": false,
+        "dynamicFormConfig": {
+          "label": "证书私钥",
+          "dynamicFormProp": "opcCertAuthCertSecret",
+          "rules": [
+            {
+              "required": true,
+              "trigger": "blur"
+            }
+          ],
+          "type": "file",
+          "required": true
+        }
+      },
+      {
+        "protocolCfgItemName": "opcEncryptionType",
+        "protocolCfgItemAlias": "OPC Encryption Type",
+        "advancedCfgItem": false,
+        "dynamicFormConfig": {
+          "label": "安全策略",
+          "dynamicFormProp": "opcEncryptionType",
+          "rules": [
+            {
+              "required": true,
+              "trigger": "blur"
+            }
+          ],
+          "type": "select",
+          "placeholder": "请选择加密方式",
+          "required": true,
+          "props": [
+            {
+              "label": "None",
+              "value": 1
+            },
+            {
+              "label": "Basic128Rsa15",
+              "value": 2
+            },
+            {
+              "label": "Basic256",
+              "value": 3
+            },
+            {
+              "label": "Basic256Sha256",
+              "value": 4
+            },
+            {
+              "label": "Aes128_Sha256_RsaOaep",
+              "value": 5
+            },
+            {
+              "label": "Aes256_Sha256_RsaPss",
+              "value": 6
+            }
+          ]
+        }
+      },
+      {
+        "protocolCfgItemName": "opcMsgSecurityMode",
+        "protocolCfgItemAlias": "OPC Message Security Mode",
+        "advancedCfgItem": false,
+        "dynamicFormConfig": {
+          "label": "消息安全模式",
+          "dynamicFormProp": "opcMsgSecurityMode",
+          "rules": [
+            {
+              "required": true,
+              "trigger": "blur"
+            }
+          ],
+          "type": "select",
+          "placeholder": "请选择消息安全模式",
+          "required": true,
+          "props": [
+            {
+              "label": "签名",
+              "value": 1
+            },
+            {
+              "label": "签名和加密",
+              "value": 2
+            }
+          ]
+        }
+      },
+      {
+        "protocolCfgItemName": "pollingPeriod",
+        "protocolCfgItemAlias": "Polling Period",
+        "protocolCfgItemValueOptions": null,
+        "advancedCfgItem": false,
+        "protocolCfgItemDesc": "秒（1-3600）",
+        "dynamicFormConfig": {
+          "label": "轮询周期",
+          "labelWidth": null,
+          "defaultValue": 10,
+          "dynamicFormProp": "pollingPeriod",
+          "rules": [
+            {
+              "required": true,
+              "max": 3600,
+              "min": 1,
+              "message": null,
+              "trigger": "blur"
+            }
+          ],
+          "type": "input",
+          "placeholder": "请输入，默认10秒",
+          "required": true
+        }
+      },
+      {
+        "protocolCfgItemName": "batchDataCollect",
+        "protocolCfgItemAlias": "Batch Data Collect Switcher",
+        "protocolCfgItemValueOptions": null,
+        "advancedCfgItem": true,
+        "dynamicFormConfig": {
+          "label": "是否批量采集",
+          "defaultValue": 1,
+          "activeValue": 1,
+          "inactiveValue": 0,
+          "dynamicFormProp": "batchDataCollect",
+          "rules": [
+            {
+              "required": true,
+              "trigger": "blur"
+            }
+          ],
+          "type": "switch",
+          "required": true
+        }
+      },
+      {
+        "protocolCfgItemName": "batchCollectCount",
+        "protocolCfgItemAlias": "Batch Data Collect Interval",
+        "protocolCfgItemValueOptions": null,
+        "advancedCfgItem": true,
+        "protocolCfgItemDesc": "毫秒（2-10000）",
+        "dynamicFormConfig": {
+          "label": "批量采集数",
+          "labelWidth": null,
+          "defaultValue": 50,
+          "dynamicFormProp": "batchCollectCount",
+          "rules": [
+            {
+              "required": true,
+              "max": 10000,
+              "min": 2,
+              "message": null,
+              "trigger": "blur"
+            },
+            {
+              "pattern": "^\\d+$",
+              "message": "请输入数字",
+              "trigger": "blur"
+            }
+          ],
+          "type": "input",
+          "placeholder": "请输入，默认50",
+          "required": true
+        }
+      },
+      {
+        "protocolCfgItemName": "collectTimeoutInterval",
+        "protocolCfgItemAlias": "Data Collect Timeout Interval",
+        "protocolCfgItemValueOptions": null,
+        "advancedCfgItem": true,
+        "protocolCfgItemDesc": "毫秒（100-60000）",
+        "dynamicFormConfig": {
+          "label": "数采超时",
+          "labelWidth": null,
+          "defaultValue": 10000,
+          "dynamicFormProp": "collectTimeoutInterval",
+          "rules": [
+            {
+              "required": true,
+              "max": 60000,
+              "min": 100,
+              "message": null,
+              "trigger": "blur"
+            },
+            {
+              "pattern": "^\\d+$",
+              "message": "请输入数字",
+              "trigger": "blur"
+            }
+          ],
+          "type": "input",
+          "placeholder": "请输入，默认10000毫秒",
+          "required": true
+        }
+      },
+      {
+        "protocolCfgItemName": "connectTimeoutInterval",
+        "protocolCfgItemAlias": "OPC Connect Timeout Interval",
+        "protocolCfgItemValueOptions": null,
+        "advancedCfgItem": true,
+        "protocolCfgItemDesc": "毫秒（100-90000）",
+        "dynamicFormConfig": {
+          "label": "连接超时",
+          "labelWidth": null,
+          "defaultValue": 2000,
+          "dynamicFormProp": "connectTimeoutInterval",
+          "rules": [
+            {
+              "required": true,
+              "max": 90000,
+              "min": 100,
+              "message": null,
+              "trigger": "blur"
+            },
+            {
+              "pattern": "^\\d+$",
+              "message": "请输入数字",
+              "trigger": "blur"
+            }
+          ],
+          "type": "input",
+          "placeholder": "请输入，默认2000毫秒",
+          "required": true
+        }
+      }
+    ]
+  },
+  "protocolExtCfg": {
+    "protocolLinkFieldInfoList": [
+      {
+        "linkSrcFieldName": "opcAuthType",
+        "linkTargetFieldList": [
+          {
+            "linkSrcFieldValue": 2,
+            "linkTargetFieldNames": [
+              "opcBasicAuthUserName",
+              "opcBasicAuthPassword"
+            ]
+          },
+          {
+            "linkSrcFieldValue": 3,
+            "linkTargetFieldNames": [
+              "opcCertAuthCertName",
+              "opcCertAuthCertSecret"
+            ]
+          }
+        ]
+      },
+      {
+        "linkSrcFieldName": "batchDataCollect",
+        "linkTargetFieldList": [
+          {
+            "linkSrcFieldValue": true,
+            "linkTargetFieldNames": [
+              "batchCollectCount"
+            ]
+          }
+        ]
+      },
+      {
+        "linkSrcFieldName": "thingPointDataType",
+        "linkTargetFieldList": [
+          {
+            "linkSrcFieldValue": 8,
+            "linkTargetFieldNames": [
+              "thingPointValueDecDigits"
+            ]
+          },
+          {
+            "linkSrcFieldValue": 9,
+            "linkTargetFieldNames": [
+              "thingPointValueDecDigits"
+            ]
+          },
+          {
+            "linkSrcFieldValue": 10,
+            "linkTargetFieldNames": [
+              "thingPointValueLength"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "protocolPointExtConfig": {
+    "protocolPointExtCfgItemList": [
+      {
+        "thingPointCfgItemName": "thingPointName",
+        "dynamicFormConfig": {
+          "label": "点位名称",
+          "dynamicFormProp": "thingPointName",
+          "type": "input",
+          "required": true,
+          "rules": [
+            {
+              "required": true,
+              "trigger": "blur"
+            },
+            {
+              "pattern": "^(?!_)(?!.*?_$)[a-zA-Z0-9_-]+$",
+              "message": "只支持英文、数字、下划线、英文中划线!",
+              "trigger": "blur"
+            }
+          ]
+        }
+      },
+      {
+        "thingPointCfgItemName": "thingPointOpcNsIndex",
+        "thingPointExtCfgFlag": true,
+        "dynamicFormConfig": {
+          "label": "NS空间索引",
+          "dynamicFormProp": "thingPointOpcNsIndex",
+          "type": "input",
+          "required": true,
+          "rules": [
+            {
+              "required": true,
+              "trigger": "blur"
+            },
+            {
+              "pattern": "^\\d+$",
+              "message": "请输入数字",
+              "trigger": "blur"
+            }
+          ]
+        }
+      },
+      {
+        "thingPointCfgItemName": "thingPointAddrType",
+        "dynamicFormConfig": {
+          "label": "地址类型",
+          "dynamicFormProp": "thingPointAddrType",
+          "type": "select",
+          "required": true,
+          "placeholder": "请选择寄存器地址类型",
+          "rules": [
+            {
+              "required": true,
+              "trigger": "blur"
+            }
+          ],
+          "async": true,
+          "fetchFunc": "/iot/device-point/getThingPointAddrTypeList/{protocolCode}"
+        }
+      },
+      {
+        "thingPointCfgItemName": "thingPointOpcIdentity",
+        "thingPointExtCfgFlag": true,
+        "dynamicFormConfig": {
+          "label": "识别码",
+          "dynamicFormProp": "thingPointOpcIdentity",
+          "type": "input",
+          "required": true,
+          "rules": [
+            {
+              "required": true,
+              "trigger": "blur"
+            }
+          ]
+        }
+      },
+      {
+        "thingPointCfgItemName": "thingPointDataType",
+        "dynamicFormConfig": {
+          "label": "数据类型",
+          "dynamicFormProp": "thingPointDataType",
+          "type": "select",
+          "required": true,
+          "rules": [
+            {
+              "required": true,
+              "trigger": "blur"
+            }
+          ],
+          "async": true,
+          "fetchFunc": "/iot/device-point/getThingPointDataTypeList/{protocolCode}"
+        }
+      },
+      {
+        "thingPointCfgItemName": "thingPointValueLength",
+        "thingPointExtCfgFlag": true,
+        "dynamicFormConfig": {
+          "label": "字符长度",
+          "dynamicFormProp": "thingPointValueLength",
+          "type": "input",
+          "required": true,
+          "rules": [
+            {
+              "required": true,
+              "trigger": "blur"
+            },
+            {
+              "pattern": "^\\d+$",
+              "message": "请输入数字",
+              "trigger": "blur"
+            }
+          ]
+        }
+      },
+      {
+        "thingPointCfgItemName": "thingPointValueDecDigits",
+        "thingPointExtCfgFlag": true,
+        "dynamicFormConfig": {
+          "label": "小数位",
+          "dynamicFormProp": "thingPointValueDecDigits",
+          "type": "input",
+          "required": true,
+          "rules": [
+            {
+              "required": true,
+              "trigger": "blur"
+            },
+            {
+              "pattern": "^\\d+$",
+              "message": "请输入数字",
+              "trigger": "blur"
+            }
+          ]
+        }
+      },
+      {
+        "thingPointCfgItemName": "thingPointPermission",
+        "dynamicFormConfig": {
+          "label": "读写权限",
+          "dynamicFormProp": "thingPointPermission",
+          "type": "select",
+          "required": true,
+          "defaultValue": 1,
+          "rules": [
+            {
+              "required": true,
+              "trigger": "blur"
+            }
+          ],
+          "props": [
+            {
+              "label": "只读",
+              "value": 1
+            },
+            {
+              "label": "读写",
+              "value": 2
+            }
+          ]
+        }
+      },
+      {
+        "thingPointCfgItemName": "thingPointDesc",
+        "dynamicFormConfig": {
+          "label": "描述",
+          "dynamicFormProp": "thingPointDesc",
+          "type": "input"
+        }
+      }
+    ]
+  }
+}
